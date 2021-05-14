@@ -32,7 +32,7 @@ import config
 
 wd_prefix = "http://www.wikidata.org/entity/"
 
-def parse_input_file() -> Dict:
+def parse_input_file(contents) -> Dict:
     create_lexeme_found = False
     create_form_found = False
     data = {}
@@ -160,27 +160,22 @@ def parse_input_file() -> Dict:
     return data
 
 if __name__ == '__main__':
-    commands = None
     try:
         with open(sys.argv[1], 'r') as f:
             contents = f.readlines()
     except IndexError:
         console.error("IndexError during reading of tsv file ")
         exit(1)
-    data = parse_input_file()
+    if contents is not None:
+        data = parse_input_file(contents)
     console.info("Commands parsed successfully")
     pprint(data)
     #exit(0)
     new_lexeme_count = len(data["new_lexemes"])
     command_count = len(data["commands"])
     if new_lexeme_count > 0 or command_count > 0:
-        # login
         # see https://www.wikidata.org/w/api.php?action=help&modules=wbeditentity for documentation
         console.info("Logging in with LexData")
-        # host = 'https://test.wikidata.org'
-        # session = mwapi.Session(host)
-        # pprint(session.login(config.user, config.botpassword))
-        # token = session.get(action='query', meta='tokens')['query']['tokens']['csrftoken']
         repo = LexData.WikidataSession(config.user, config.botpassword)
         # first execute creation of lexemes
         if new_lexeme_count > 0:
@@ -192,8 +187,6 @@ if __name__ == '__main__':
                 language_item_id = lexeme["language_item_id"]
                 lexical_category = lexeme["lexical_category"]
                 console.info(f"Creating {lemma} with {len(forms)} forms and {len(claims)} claims")
-                # Open a Lexeme
-                #L2 = LexData.Lexeme(repo, "L2")
                 # Find or create a Lexeme by lemma, language and lexical category
                 # Configure languages of LexData
                 lang = LexData.language.Language(wikimedia_language_code, language_item_id)
@@ -232,5 +225,8 @@ if __name__ == '__main__':
                 # print("Logging in with WikibaseIntegrator")
                 # wbi_login.Login(user=config.user, pwd=config.botpassword)
         if command_count > 0:
+            # TODO implement adding claims to existing lexemes (using WikibaseIntegrator)
             #print("Updating lexeme now using LexData")
+            # Open a Lexeme
+            # L2 = LexData.Lexeme(repo, "L2")
             pass
