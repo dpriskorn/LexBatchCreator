@@ -1,14 +1,22 @@
 # LexBatchCreator
-Purpose: This script creates lexemes based on a list with the following syntax
-# Syntax
+This script creates lexemes based on a special syntax that can be easily generated manually using LibreOffice or similar spreadsheet software or by other tools.
+
+## Syntax
 similar to QuickStatements V1
 - LC = lexical category
 - LEM = lemma
 - LANG = language QID
 - LANG_CODE = wikimedia code for language
 - Form syntax:
-- Rxx = representation language code e.g. Rsv for Swedish
-- GF = grammatical feature
-- FP = form property
+ - Rxx = representation language code e.g. Rsv for Swedish
+ - GF = grammatical feature
+ - FP = form property
 
 see test.tsv for an example
+
+## Setup
+Copy config.example.py to config.py yourself and adjust the following
+content:
+
+username = "username"
+password= "password"
