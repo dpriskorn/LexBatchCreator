@@ -200,7 +200,8 @@ if __name__ == '__main__':
                     # FIXME only supports 1 representation
                     form_representation: Tuple = form["form_representations"][0] # list of tuples
                     word: str = form_representation[1]
-                    grammatical_features: List[str] = form["grammatical_features"] # list of strings
+                    grammatical_features = form["grammatical_features"] # list of strings
+                    pprint(grammatical_features)
                     result = new_lexeme.createForm(form_representation[1], grammatical_features)
                     pprint(result)
 

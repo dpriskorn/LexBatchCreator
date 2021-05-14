@@ -13,13 +13,9 @@ from ppprint import console
 def fetch_lexeme_forms_templates():
     # This is a bit of a hack since the information is not available in e.g. JSON
     # we have to write it to a file to use the data
-    response = r.get(url="https://raw.githubusercontent.com/lucaswerkmeister/tool-lexeme-forms/main/templates.py")
+    response = r.get(url="https://lexeme-forms.toolforge.org/api/v1/template/")
     if response.status_code == 200:
-        with open("../lexeme_forms_templates.py", "w", encoding='utf8') as f:
-            f.write(response.text)
-    from lexeme_forms_templates import templates
-    #pprint(templates["swedish-noun-common"])
-    return templates
+        return response.json()
 
 def read_file():
     print("Attempting to read the csv file with one word per line")
@@ -32,7 +28,9 @@ def read_file():
 
 if __name__ == '__main__':
     lines = read_file()
+    console.info("Fetching lexeme forms templates")
     templates = fetch_lexeme_forms_templates()
+    #pprint(templates["swedish-noun-common"])
     # Ask relevant questions
     language_code = input("What is the wikimedia language code?: ")
     language_item_id = input("What language item QID?: ")
@@ -46,7 +44,7 @@ if __name__ == '__main__':
         ending = input(f'Type in the generic ending for: {form["label"]} \nwith the example: {form["example"]}: ')
         generic_endings.append(ending)
     print("Writing output to output.tsv")
-    with open("../output.tsv", "a") as f:
+    with open("output.tsv", "a") as f:
         for line in lines:
             line = line.strip()
             f.write(f"CREATE\n")
@@ -58,7 +56,16 @@ if __name__ == '__main__':
             for index, form in enumerate(forms):
                 f.write(f"LAST\tCREATE_FORM\n")
                 f.write(f"LAST\tRsv\t{line+generic_endings[index]}\n")
-                f.write(f"LAST\tGF\t{form['grammatical_features_item_ids']}\n")
+                grammatical_features = form['grammatical_features_item_ids']
+                if len(grammatical_features) > 1:
+                    for gf in grammatical_features:
+                        f.write(f"LAST\tGF\t{gf}\n")
+                elif len(grammatical_features) == 0:
+                    console.warn("No grammatical features specified")
+                else:
+                    # only 1 gf
+                    console.debug(f"Only 1 grammatical feature found for {line}")
+                    f.write(f"LAST\tGF\t{form['grammatical_features_item_ids']}\n")
                 f.write(f"LAST\tEND_FORM\n")
             f.write(f"END\n")
     print("Done")
