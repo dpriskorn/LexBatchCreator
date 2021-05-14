@@ -1,7 +1,7 @@
 import re
 import sys
 import json
-from typing import Dict, List
+from typing import Dict, List, Tuple
 from pprint import pprint
 
 from ppprint import console
@@ -120,7 +120,10 @@ def parse_input_file(contents) -> Dict:
                 # add form to list of forms
                 forms.append(create_form_data)
                 create_form_found = False
+                # Cleanup
                 create_form_data = {}
+                grammatical_features = []
+                form_representations = []
             else:
                 console.warn(f"Skipped {line}", line.find("\tP"))
         elif line.find("END") == 0:
@@ -194,7 +197,9 @@ if __name__ == '__main__':
                 new_lexeme = LexData.get_or_create_lexeme(repo, lemma, lang, lexical_category)
                 pprint(new_lexeme)
                 for form in forms:
-                    form_representation: str = form["form_representations"][0] # list of tuples
+                    # FIXME only supports 1 representation
+                    form_representation: Tuple = form["form_representations"][0] # list of tuples
+                    word: str = form_representation[1]
                     grammatical_features: List[str] = form["grammatical_features"] # list of strings
                     result = new_lexeme.createForm(form_representation[1], grammatical_features)
                     pprint(result)
