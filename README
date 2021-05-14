@@ -3,16 +3,16 @@ This script creates lexemes based on a special syntax that can be easily generat
 
 ## Syntax
 similar to QuickStatements V1
-- LC = lexical category
+- LC = lexical category item ID
 - LEM = lemma
 - LANG = language QID
-- LANG_CODE = wikimedia code for language
+- LANG_CODE = wikimedia code for language e.g. "sv"
 - Form syntax:
- - Rxx = representation language code e.g. Rsv for Swedish
+ - Rxx = representation language code e.g. "Rsv" for Swedish
  - GF = grammatical feature
  - FP = form property
 
-see test.tsv for an example
+see the examples-folder for more
 
 ## Setup
 Copy config.example.py to config.py yourself and adjust the following
