@@ -17,35 +17,37 @@ see the examples-folder for more
 
 ## Development
 Below is list of features that is planned to be implemented, pull requests are welcome :)
+WLF = Wikidata Lexeme Forms
+WS = QuickStatements
 
 On existing lexemes:
-- Check for duplicates when adding a form
-- Adding forms with 1 form representation
-- Adding multiple form representations to a form
-- Adding senses with one gloss
-- Adding senses with multiple glosses
-- Adding lexeme statements (QS supports this, WikibaseIntegrator as well)
-- Adding form statements
-- Adding sense statements
-- Adding form representation on existing form
-- Adding gloss on existing sense
-- Deleting lexeme statements (QS supports this)
-- Deleting form statements
-- Deleting sense statements
-- Removing forms
-- Removing senses
-- Removing grammatical features on forms
-- Removing glosses on senses
+- Check for duplicates when bulk-adding forms (WLF supports this)
+- Bulk-adding forms with 1 form representation (WLF supports this)
+- Bulk-adding multiple form representations to a form (WLF supports this. In bulk mode only?)
+- Bulk-adding senses with one gloss
+- Bulk-adding senses with multiple glosses
+- Bulk-adding lexeme statements (QS supports this, WikibaseIntegrator as well)
+- Bulk-adding form statements
+- Bulk-adding sense statements
+- Bulk-adding form representation on existing form (WLF supports this, but the drag-n-drop possibility might not be clear to users leading to duplication of forms)
+- Bulk-adding gloss on existing sense
+- Bulk-removing lexeme statements (QS supports this)
+- Bulk-removing form statements
+- Bulk-removing sense statements
+- Bulk-removing forms
+- Bulk-removing senses
+- Bulk-removing grammatical features on forms (WLF supports this, but the drag-n-drop possibility might not be clear to users leading to duplication of forms)
+- Bulk-removing glosses on senses
 
 On new lexemes: 
-- Adding forms with 1 form representation (implemented may 2021)
-- Adding forms with multiple grammatical features (implemented may 2021)
-- Adding multiple form representations to a form
-- Adding senses with one gloss
-- Adding senses with multiple glosses
-- Adding lexeme statements
-- Adding form statements
-- Adding sense statements
+- Bulk-adding forms with 1 form representation (implemented may 2021) (WLF supports this)
+- Bulk-adding forms with multiple grammatical features (implemented may 2021) (WLF supports this)
+- Bulk-adding multiple form representations to a form (WLF supports this)
+- Bulk-adding senses with one gloss
+- Bulk-adding senses with multiple glosses
+- Bulk-adding lexeme statements
+- Bulk-adding form statements
+- Bulk-adding sense statements
 
 ## Setup
 Copy config.example.py to config.py yourself and adjust the following
