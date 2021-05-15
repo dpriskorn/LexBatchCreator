@@ -30,7 +30,7 @@ On existing lexemes:
 - Bulk-adding form statements
 - Bulk-adding sense statements
 - Bulk-adding form representation on existing form (WLF supports this, but the drag-n-drop possibility might not be clear to users leading to duplication of forms)
-- Bulk-adding gloss on existing sense
+- Bulk-adding glosses on existing sense
 - Bulk-removing lexeme statements (QS supports this)
 - Bulk-removing form statements
 - Bulk-removing sense statements
