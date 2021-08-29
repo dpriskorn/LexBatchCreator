@@ -17,10 +17,11 @@ see the examples-folder for more
 
 ## Development
 Below is list of features that is planned to be implemented, pull requests are welcome :)
-WLF = Wikidata Lexeme Forms
-WS = QuickStatements
+### Abbreviations
+* WLF = Wikidata Lexeme Forms
+* QS = QuickStatements
 
-On existing lexemes:
+### On existing lexemes:
 - Check for duplicates when bulk-adding forms (WLF supports this)
 - Bulk-adding forms with 1 form representation (WLF supports this)
 - Bulk-adding multiple form representations to a form (WLF supports this. In bulk mode only?)
@@ -39,7 +40,7 @@ On existing lexemes:
 - Bulk-removing grammatical features on forms (WLF supports this, but the drag-n-drop possibility might not be clear to users leading to duplication of forms)
 - Bulk-removing glosses on senses
 
-On new lexemes: 
+### On new lexemes: 
 - Bulk-adding forms with 1 form representation (implemented may 2021) (WLF supports this)
 - Bulk-adding forms with multiple grammatical features (implemented may 2021) (WLF supports this)
 - Bulk-adding multiple form representations to a form (WLF supports this)
