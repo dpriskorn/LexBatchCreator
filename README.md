@@ -50,6 +50,9 @@ Below is list of features that is planned to be implemented, pull requests are w
 - Bulk-adding form statements
 - Bulk-adding sense statements
 
+# License
+GPLv3+
+
 ## Setup
 Copy config.example.py to config.py yourself and adjust the following
 content:
